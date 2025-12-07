@@ -18,4 +18,8 @@ app.use(cors({
 
 app.use('/api/auth', authRouter);
 
+app.get("*name", (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
 module.exports = app;

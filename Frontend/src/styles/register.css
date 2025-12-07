@@ -1,0 +1,44 @@
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e0f2fe;
+}
+
+.register-box {
+  background: #ffffff;
+  padding: 30px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.register-box h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.register-box input {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.register-box button {
+  padding: 12px;
+  background: #0284c7;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.register-box p {
+  text-align: center;
+  margin-top: 10px;
+}

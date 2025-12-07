@@ -19,8 +19,9 @@ app.use(cors({
 app.use('/api/auth', authRouter);
 
 // Catch-all route for SPA
-app.get("*name", (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
+
 
 module.exports = app;

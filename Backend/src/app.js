@@ -1,27 +1,30 @@
-const express = require('express');
+const express = require("express");
 const cookieParser = require("cookie-parser");
-const authRouter = require('./routes/auth.routes');
-const path = require('path');
-const cors = require('cors')
+const authRouter = require("./routes/auth.routes");
+const path = require("path");
+const cors = require("cors");
 
 const app = express();
+
 app.use(express.json());
 app.use(cookieParser());
 
-// Serve static files from public directory
-app.use(express.static(path.join(__dirname, '../public')));
+// CORS FIX — add your Render frontend URL here
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://assignment-05mu.onrender.com" // your render frontend
+    ],
+    credentials: true,
+  })
+);
 
-app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
-}))
+// API routes
+app.use("/api/auth", authRouter);
 
-app.use('/api/auth', authRouter);
-
-// Catch-all route for SPA
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
-
+// REMOVE wildcard catch-all (Express 5 does not allow "*")
+// Backend should not serve frontend, so DO NOT include:
+// app.get("*", ...);
 
 module.exports = app;

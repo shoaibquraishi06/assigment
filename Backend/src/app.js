@@ -20,11 +20,16 @@ app.use(
   })
 );
 
+
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, '../public')));
+
 // API routes
 app.use("/api/auth", authRouter);
 
-// REMOVE wildcard catch-all (Express 5 does not allow "*")
-// Backend should not serve frontend, so DO NOT include:
-// app.get("*", ...);
+// Catch-all route for SPA (must be after static and API routes)
+app.get('*name', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 module.exports = app;
